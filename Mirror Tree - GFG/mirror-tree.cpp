@@ -112,13 +112,24 @@ class Solution {
     // Function to convert a binary tree into its mirror tree.
     void mirrortree(Node* root)
     { 
-        if(root==NULL) return ;
-     //   cout<<root->val<<" ";
-   
+        if(root==NULL) return;
+      //  cout<<root->val<<" ";
+    if(root->left!=NULL && root->right!=NULL)
+    {
         Node* node=root->left;
         root->left=root->right;
         root->right=node;
-
+    }
+   else if(root->left!=NULL && root->right==NULL )
+    {
+        root->right=root->left;
+        root->left=NULL;
+    }
+    else if(root->left==NULL && root->right!=NULL )
+    {
+        root->left=root->right;
+        root->right=NULL;
+    }
     mirrortree(root->left);
     mirrortree(root->right);
     
